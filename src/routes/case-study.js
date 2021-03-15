@@ -7,10 +7,10 @@ router.post('/', createValidationFor('case-study'),
   checkValidationResult
   , async (req, res) => {
     try {
-      const { startDate, endDate, minCount, maxCount } = req.body;
-      const data = await CaseStudy.aggregate([
+      const { startDate, endDate, minCount, maxCount } = req.body; // de construct body object
+      const data = await CaseStudy.aggregate([ // using aggregate to chain 2 match filter and one projection in a specific sequence
         { $match: { createdAt: { $gte: new Date(startDate), $lte: new Date(endDate) } } },
-        { $project: { _id: 0, key: "$key", createdAt: "$createdAt", totalCount: { "$sum": "$counts" } } },
+        { $project: { _id: 0, key: "$key", createdAt: "$createdAt", totalCount: { "$sum": "$counts" } } }, // taking sum to put condition afterwards on `totalCount`
         { $match: { totalCount: { $lte: maxCount, $gte: minCount } } }
       ]);
       console.log(data.length);
@@ -19,7 +19,7 @@ router.post('/', createValidationFor('case-study'),
       throw new Error(e);
     }
   })
-function createValidationFor(route) {
+function createValidationFor(route) { // validate params [we can create these kind of functions in helpers] 
   switch (route) {
     case 'case-study':
       return [
