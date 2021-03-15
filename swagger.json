@@ -1,0 +1,108 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Getir Challege.",
+    "version": "1.0.5",
+    "title": "Getir Challege",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "basePath": "/",
+  "schemes": ["https", "http"],
+  "paths": {
+    "/case-study": {
+      "post": {
+        "tags": ["findData"],
+        "summary": "Find Data",
+        "description": "",
+        "operationId": "findData",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "find data now",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/finddata"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Data  found",
+
+            "errors": [
+              {
+                "msg": "Success",
+                "code": 0,
+                "data": []
+              }
+            ]
+          },
+          "422": {
+            "errors": [
+              {
+                "msg": "MaxCount is missing",
+                "param": "maxCount",
+                "location": "body"
+              }
+            ]
+          },
+          "404": {
+            "description": "Data not found"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "api_key": {
+      "type": "apiKey",
+      "name": "api_key",
+      "in": "header"
+    },
+    "petstore_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://petstore.swagger.io/oauth/authorize",
+      "flow": "implicit",
+      "scopes": {
+        "read:pets": "read your pets",
+        "write:pets": "modify pets in your account"
+      }
+    }
+  },
+  "definitions": {
+    "finddata": {
+      "type": "object",
+      "required": ["name", "photoUrls"],
+      "properties": {
+        "startDate": {
+          "type": "string"
+        },
+        "endDate": {
+          "type": "string"
+        },
+
+        "minCount": {
+          "type": "number",
+          "example": "127"
+        },
+        "maxCount": {
+          "type": "number",
+          "example": "220"
+        }
+      },
+      "xml": {
+        "name": "Pet"
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}
