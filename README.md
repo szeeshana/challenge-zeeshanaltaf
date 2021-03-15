@@ -11,22 +11,16 @@ Requirements
 ## Installation
 
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
 
 ```bash
 Clone the repo 
-git clone https://w...
-cd folder_name
+git clone https://github.com/szeeshana/challenge-zeeshanaltaf.git
+cd `folder_name`
 npm install
 npm run dev
 npm run test
 ```
 
+To see requirements please visit below link : 
 
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
-
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
+[Requirement Doc](https://docs.google.com/document/d/1zh2VFl9P0Wj6ulzY-Q2PqPMtPNEDtoNqiYkqEMlbypA/edit?usp=sharing)
